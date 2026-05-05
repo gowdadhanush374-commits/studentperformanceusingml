@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2 class="text-center text-white mb-4">⚙️ Admin Dashboard</h2>
+
+    <!-- USERS TABLE -->
+    <div class="card glass p-3 mb-4">
+        <h4 class="text-white">👥 Users</h4>
+
+        <p class="text-white">Total Users: {{ users|length }}</p>
+
+        <table class="table table-hover table-dark text-center align-middle">
+            <thead>
+                <tr>
+                    <th>#</th> <!-- ✅ Serial Number -->
+                    <th>Username</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for u in users %}
+                <tr>
+                    <td>{{ loop.index }}</td> <!-- ✅ FIX -->
+                    <td>{{u[1]}}</td>
+                    <td>
+                        <a href="/delete_user/{{u[0]}}"
+                           class="btn btn-danger btn-sm"
+                           onclick="return confirm('Delete this user?')">
+                           🗑 Delete
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- RESULTS TABLE -->
+    <div class="card glass p-3">
+        <h4 class="text-white">📊 Results</h4>
+
+        <p class="text-white">Total Results: {{ results|length }}</p>
+
+        <table class="table table-hover table-dark text-center align-middle">
+            <thead>
+                <tr>
+                    <th>#</th> <!-- ✅ Serial Number -->
+                    <th>User</th>
+                    <th>Result</th>
+                    <th>Score</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for r in results %}
+                <tr>
+                    <td>{{ loop.index }}</td> <!-- ✅ FIX -->
+                    <td>{{r[1]}}</td>
+
+                    <td>
+                        {% if r[2] == "Good Performance" %}
+                            <span class="badge bg-success">Good</span>
+                        {% else %}
+                            <span class="badge bg-warning text-dark">Needs Improvement</span>
+                        {% endif %}
+                    </td>
+
+                    <td>{{r[3]}}</td>
+
+                    <td>
+                        <a href="/delete_result/{{r[0]}}"
+                           class="btn btn-warning btn-sm"
+                           onclick="return confirm('Delete this result?')">
+                           🗑 Delete
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- LOGOUT BUTTON -->
+    <div class="text-center mt-4">
+        <a href="/admin_logout" class="btn btn-danger">Logout</a>
+    </div>
+
+</div>
+
+<!-- 🎨 STYLE -->
+<style>
+
+/* Glass effect */
+.glass {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+/* Table hover */
+.table-hover tbody tr:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+<button onclick="history.back()" class="btn btn-secondary mb-3">⬅ Back</button>
+/* Badge styling */
+.badge {
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+</style>
+
+{% endblock %}

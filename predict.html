@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="glass">
+<h3>🎯 Predict Performance</h3>
+
+<form method="POST">
+
+<input name="hours" class="form-control mb-2" placeholder="Study Hours" required>
+<input name="attendance" class="form-control mb-2" placeholder="Attendance %" required>
+<input name="previous" class="form-control mb-2" placeholder="Previous Score" required>
+<input name="assignments" class="form-control mb-2" placeholder="Assignments" required>
+<input name="extra" class="form-control mb-2" placeholder="Extra Activities" required>
+<input name="sleep" class="form-control mb-2" placeholder="Sleep Hours" required>
+
+<button class="btn btn-success w-100 mt-2">Predict</button>
+
+</form>
+
+{% if result %}
+<hr>
+
+<h4>Result: {{ result }}</h4>
+<p>{{ rec }}</p>
+
+{% if result == "Good Performance" %}
+<div class="alert alert-success">🎉 Excellent Performance</div>
+{% else %}
+<div class="alert alert-warning">⚠ Needs Improvement</div>
+{% endif %}
+
+{% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="glass">
+<h3>🤖 AI Chatbot</h3>
+
+<form method="POST">
+<input name="msg" class="form-control mb-3" placeholder="Ask anything..." required>
+<button class="btn btn-info">Send</button>
+    <button onclick="history.back()" class="btn btn-secondary mb-3">⬅ Back</button>
+</form>
+
+{% if reply %}
+<div class="alert alert-success mt-3">
+🤖 {{reply}}
+</div>
+{% endif %}
+
+</div>
+
+{% endblock %}

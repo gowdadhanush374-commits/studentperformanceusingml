@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2 data-aos="fade-down">Welcome {{session['user']}}</h2>
+
+<div class="row g-4 mt-3">
+
+<div class="col-md-3" data-aos="zoom-in">
+<div class="card-custom text-center">
+<h5>📊 Predict</h5>
+<a href="/predict" class="btn btn-primary w-100">Open</a>
+</div>
+</div>
+
+<div class="col-md-3" data-aos="zoom-in">
+<div class="card-custom text-center">
+<h5>📈 Charts</h5>
+<a href="/charts" class="btn btn-success w-100">View</a>
+</div>
+</div>
+
+<div class="col-md-3" data-aos="zoom-in">
+<div class="card-custom text-center">
+<h5>📂 Upload</h5>
+<a href="/upload" class="btn btn-warning w-100">Upload</a>
+</div>
+</div>
+
+<div class="col-md-3" data-aos="zoom-in">
+<div class="card-custom text-center">
+<h5>🤖 Chatbot</h5>
+<a href="/chatbot" class="btn btn-info w-100">Open</a>
+</div>
+</div>
+<button onclick="history.back()" class="btn btn-secondary mb-3">⬅ Back</button>
+</div>
+
+{% endblock %}

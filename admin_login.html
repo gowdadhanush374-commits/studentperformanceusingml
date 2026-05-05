@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+
+    <div class="glass p-4 text-center" style="width:350px;">
+        <h3 class="text-white mb-3">🔐 Admin Login</h3>
+
+        <form method="POST">
+            <input class="form-control mb-3" name="username" placeholder="Admin Username" required>
+            <input class="form-control mb-3" type="password" name="password" placeholder="Password" required>
+
+            <button class="btn btn-danger w-100">Login</button>
+        </form>
+    </div>
+<button onclick="history.back()" class="btn btn-secondary mb-3">⬅ Back</button>
+</div>
+
+{% endblock %}
